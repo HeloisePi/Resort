@@ -22,15 +22,28 @@ public class Jump : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        GameObject platform2 = GameObject.FindGameObjectWithTag("Platform2");
+        BoxCollider2D platform2Collider = platform2.GetComponent<BoxCollider2D>();
+        GameObject platform = GameObject.FindGameObjectWithTag("Platform");
+        BoxCollider2D platformCollider = platform.GetComponent<BoxCollider2D>();
         if (other.gameObject.CompareTag("Coin"))
         {
             Debug.Log("Collision");
             Destroy(other.gameObject);
 
             // Trouver l'objet avec le tag "Platform"
-            GameObject platform = GameObject.FindGameObjectWithTag("Platform");
-            BoxCollider2D platformCollider = platform.GetComponent<BoxCollider2D>();
             platformCollider.enabled = true;
+            platform2Collider.enabled = false;
+        }
+
+        if (other.gameObject.CompareTag("Coin2"))
+        {
+            Debug.Log("Collision");
+            Destroy(other.gameObject);
+
+            // Trouver l'objet avec le tag "Platform"
+            platform2Collider.enabled = true;
+            platformCollider.enabled = false;
         }
     }
 }

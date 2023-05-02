@@ -7,6 +7,8 @@ TagManager:
   - Platform
   - Hitbox
   - Coin
+  - Platform2
+  - Coin2
   layers:
   - Default
   - TransparentFX
